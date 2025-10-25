@@ -21,7 +21,7 @@ class RegisterView(generics.CreateAPIView):
         serializers = self.get_serializer(data = request.data)
         if serializers.is_valid(raise_exception=True):
             serializers.save()
-            return Response({"message": "User registered successfully!"}, status=201)
+            return Response(serializers.data, status=201)
         return Response(serializer.errors, status=400)
     
 
